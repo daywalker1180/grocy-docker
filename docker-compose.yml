@@ -3,28 +3,28 @@ version: '2.4'
 services:
 
   frontend:
-    image: "grocy/frontend:v4.0.3"
+    image: "daywalker1180/grocy-frontend:v4.2.0"
     build:
       args:
-        GROCY_VERSION: v4.0.3
-        PLATFORM: linux/amd64
+        GROCY_VERSION: v4.2.0
+        PLATFORM: linux/arm64
       context: .
       dockerfile: Containerfile-frontend
     depends_on:
       - backend
     ports:
-      - '127.0.0.1:8080:8080'
+      - '8080:8080'
     read_only: true
     tmpfs:
       - /tmp
     restart: unless-stopped
 
   backend:
-    image: "grocy/backend:v4.0.3"
+    image: "daywalker1180/grocy-backend:v4.2.0"
     build:
       args:
-        GROCY_VERSION: v4.0.3
-        PLATFORM: linux/amd64
+        GROCY_VERSION: v4.2.0
+        PLATFORM: linux/arm64
       context: .
       dockerfile: Containerfile-backend
     expose:
